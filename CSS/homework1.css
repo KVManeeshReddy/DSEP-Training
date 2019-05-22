@@ -1,0 +1,87 @@
+* {
+    box-sizing: border-box;
+}
+
+html,body{
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+main{
+    flex: 1;
+}
+
+header{
+    display: block;
+    text-align: center;
+    background-color: green;
+    color: white;
+    font-size: x-large;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    width: 100%;
+}
+
+.column1{
+    display: flex;
+    padding: 1em;
+    border: 1em;
+    text-align: justify;
+    flex-direction: column;
+    flex: 1;
+}
+
+.column2{
+    display: flex;
+    padding: 1em;
+    border: 1em;
+    text-align: justify;
+    flex-direction: column;
+    flex: 1;
+}
+
+.column3{
+    display: flex;
+    padding: 1em;
+    border: 1em;
+    text-align: justify;
+    flex-direction: column;
+    flex: 1;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+h1,h3,p{
+    font-family: sans-serif;
+}
+
+h3{
+    text-align: center;
+}
+
+p{
+    text-indent: 1em;
+}
+
+@media screen and (max-width: 538px){
+    .row{
+        flex-flow: column wrap;
+    }
+}
+
+.footer{
+    text-align: center;
+    background-color: silver;
+    font-family: 'Segoe UI';
+    margin: 0em;
+}
