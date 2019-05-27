@@ -1,7 +1,12 @@
-const baseURL = "https://api.pokemontcg.io/v1/cards";
+const baseURL = "https://api.pokemontcg.io/v1/cards"; //BASE_URL
+
+
+//Generating DOM
+// createNode == creatElement
+//append = appendChild(child, parent)
 
 const createTag = (nameOfTag, tagAttributes, content, parentTag) => {
-    var tag = document.createElement(nameOfTag);
+    var tag = document.createElement(nameOfTag); //No Var
 
     //setting attributes for the tag.
 
@@ -23,38 +28,37 @@ const createTag = (nameOfTag, tagAttributes, content, parentTag) => {
     parent.appendChild(tag);
 }
 
-class Fetcher {
+class Pokedex {
     constructor(card_type) {
 
         this.card_type = card_type;
     }
-    generateCompleteURL(name) {
+    generateURL(name) {
         let typeID = "";
         if (this.card_type === "item") {
             typeID = "subtype";
         } else {
             typeID = "supertype";
         }
-        let completeURL = `${baseURL}?${typeID}=${this.card_type}&name=${name}`;
-        return completeURL;
+        return `${baseURL}?${typeID}=${this.card_type}&name=${name}`;
+
     }
     getCards(name) {
-        let completeURL = this.generateCompleteURL(name);
-        let result = fetch(completeURL).then(response => response.json());
-        return result;
+        //let completeURL = this.generateCompleteURL(name);
+        return fetch(this.generateURL(name)).then(response => response.json());
+
     }
 }
 
 async function search(card_type, name_id) {
-    let fetcher = new Fetcher(card_type);
+    let pokedex = new Pokedex(card_type);
     let name = document.getElementById(`${name_id}`).value;
-    let result = await fetcher.getCards(name);
-    return result;
-    //console.log(result);
+    return await pokedex.getCards(name);
 }
 
 async function generateRequiredDetails(card_type, name_id) {
     let result = await search(card_type, name_id);
+    console.log(result);
     let requiredDetails = [];
     result.cards.forEach(element => {
         let name = element.name;
@@ -66,11 +70,11 @@ async function generateRequiredDetails(card_type, name_id) {
     return requiredDetails;
 }
 
-async function displayCards(card_type, name_id) {
+function displayCards(card_type, name_id) {
     let cardDeckID = "cardsSection"
     document.getElementById(cardDeckID).innerHTML = "";
-    let requiredDetails = await generateRequiredDetails(card_type, name_id).then(requiredDetails => {
-        for (var index in requiredDetails) {
+    let requiredDetails = generateRequiredDetails(card_type, name_id).then(requiredDetails => {
+        for (let index in requiredDetails) {
             createTag(`div`, { "class": `card`, "id": `${index}` }, null, `cardsSection`);
             createTag(`div`, { "class": `card-body`, "id": `body${index}` }, null, `${index}`);
             createTag(`img`, { "src": `${requiredDetails[index].imageUrl}`, "alt": `${requiredDetails[index].name}` }, null, `body${index}`);
