@@ -76,11 +76,9 @@ function displayCards(card_type, name_id) {
     let requiredDetails = generateRequiredDetails(card_type, name_id).then(requiredDetails => {
         for (let index in requiredDetails) {
             createTag(`div`, { "class": `card`, "id": `${index}` }, null, `cardsSection`);
+            createTag(`img`, { "class": `card-img`, "src": `${requiredDetails[index].imageUrl}`, "alt": `${requiredDetails[index].name}` }, null, `${index}`);
             createTag(`div`, { "class": `card-body`, "id": `body${index}` }, null, `${index}`);
-            createTag(`img`, { "src": `${requiredDetails[index].imageUrl}`, "alt": `${requiredDetails[index].name}` }, null, `body${index}`);
-            createTag(`div`, { "class": `card-footer`, "id": `footer${index}` }, null, `${index}`);
-            createTag(`h4`, { "id": `card-name` }, `${requiredDetails[index].name}`, `footer${index}`);
+            createTag(`h4`, { "id": `card-name` }, `${requiredDetails[index].name}`, `body${index}`);
         }
     });
-
 }

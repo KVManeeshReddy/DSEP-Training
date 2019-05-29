@@ -1,0 +1,72 @@
+    #chill {
+        justify-content: center;
+    }
+    
+    .navbar-brand {
+        margin-left: 10vw;
+    }
+    
+    .nav-link .nav-link.active {
+        background-color: red;
+        color: seashell;
+    }
+    
+    a {
+        color: seashell;
+        font-family: cursive;
+    }
+    
+    a:hover {
+        color: black;
+    }
+    
+    ul {
+        margin-left: 15vw;
+    }
+    
+    .card {
+        margin-top: 1em;
+        margin-bottom: 1em;
+        min-width: 16em;
+        max-width: 16em;
+    }
+    
+    .footer {
+        text-align: center;
+        background-color: silver;
+        font-family: 'Segoe UI';
+        margin-top: 2em;
+        margin-bottom: 0;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+    }
+    
+    footer {
+        padding-top: 2rem;
+    }
+    
+    .card-img {
+        max-width: 17em;
+        max-height: 350px;
+    }
+    
+    .container {
+        max-width: 57em;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    @media (min-width: 576px) {
+        .card-deck .card {
+            display: flex;
+            -ms-flex: 1 0 0%;
+            flex: 1 0 0%;
+            flex-direction: column;
+            margin-right: auto;
+            margin-bottom: 0;
+            margin-left: auto;
+        }
+    }
